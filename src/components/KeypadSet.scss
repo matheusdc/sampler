@@ -1,0 +1,10 @@
+$keypad-color: lightpink;
+$keypad-size: 100px;
+$keypad-light: 150px;
+
+.keypad-set {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #222;
+}

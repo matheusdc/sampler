@@ -1,0 +1,38 @@
+$keypad-color: blueviolet;
+$keypad-size: 100px;
+$keypad-light: 150px;
+
+.keypad {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
+
+  height: $keypad-size;
+  width: $keypad-size;
+
+  -moz-box-shadow:    inset 0 0 $keypad-light darken($keypad-color, 30%);
+  -webkit-box-shadow: inset 0 0 $keypad-light darken($keypad-color, 30%);
+  box-shadow:         inset 0 0 $keypad-light darken($keypad-color, 30%);
+
+  background-color: lighten($keypad-color, 30%);
+
+  .description {
+    align-self: flex-end;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #222;
+    font-size: 10px;
+  }
+
+  .key {
+    align-self: flex-start;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #222;
+    font-size: 20px;
+  }
+}
