@@ -8,15 +8,15 @@ class App extends Component {
   render() {
     return (
       <KeypadSet>
-        <Keypad triggerKey="q" description="Audio File"/>
-        <Keypad triggerKey="w" description="Audio File"/>
-        <Keypad triggerKey="e" description="Audio File"/>
-        <Keypad triggerKey="a" description="Audio File"/>
-        <Keypad triggerKey="s" description="Audio File"/>
-        <Keypad triggerKey="d" description="Audio File"/>
-        <Keypad triggerKey="z" description="Audio File"/>
-        <Keypad triggerKey="x" description="Audio File"/>
-        <Keypad triggerKey="c" description="Audio File"/>
+        <Keypad triggerKey="q" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="w" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="e" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="a" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="s" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="d" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="z" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="x" color="#8A2BE2" description="Audio File"/>
+        <Keypad triggerKey="c" color="#8A2BE2" description="Audio File"/>
       </KeypadSet>
     );
   }

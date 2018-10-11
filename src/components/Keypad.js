@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Mousetrap from 'mousetrap';
+import KeyHandler, { KEYDOWN, KEYUP } from 'react-key-handler';
 
 import './Keypad.scss';
 
@@ -7,25 +7,29 @@ import { LightenDarkenColor } from './Color';
 
 export default class Keypad extends Component {
 
-  state = {
-    audioClip: '',
-    color: '#8A2BE2',
-    pressed: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      audioClip: '',
+      color: this.props.color,
+      pressed: false
+    };
+  }
 
-  _keyAction = () => {
-    console.log(this.state.pressed);
-    this.setState({ pressed: !this.state.pressed })
+  _keyDownAction = () => {
+    if(!this.state.pressed) {
+      this.setState({ pressed: true })
+    }
+  }
+
+  _keyUpAction = () => {
+    this.setState({ pressed: false })
   }
 
   _generateShades = () => {
-    const darken = LightenDarkenColor(this.state.color, -30);
-    const lighten = LightenDarkenColor(this.state.color, 30);
+    const darken = LightenDarkenColor(this.state.color, -70);
+    const lighten = LightenDarkenColor(this.state.color, 70);
     return { darken, lighten };
-  }
-
-  componentDidMount() {
-    Mousetrap.bind(this.props.triggerKey, () => this._keyAction());
   }
 
   render() {
@@ -33,8 +37,8 @@ export default class Keypad extends Component {
     const { darken, lighten } = this._generateShades();
 
     const keyPressed = {
-      backgroundColor: this.state.color,
-      boxShadow: `inset 0 0 100px ${lighten}`
+      backgroundColor: lighten,
+      boxShadow: `inset 0 0 50px ${darken}`
     };
 
     const keyReleased = {
@@ -44,7 +48,18 @@ export default class Keypad extends Component {
 
     return (
       <div className="keypad-container">
-        <div className="keypad" style={pressed ? keyPressed : keyReleased} onClick={this.keyAction}>
+        <KeyHandler
+          keyEventName={KEYDOWN}
+          keyValue={this.props.triggerKey}
+          onKeyHandle={this._keyDownAction}
+        />
+        <KeyHandler
+          keyEventName={KEYUP}
+          keyValue={this.props.triggerKey}
+          onKeyHandle={this._keyUpAction}
+        />
+
+        <div className="keypad" style={pressed ? keyPressed : keyReleased} >
           <span className="description">{this.props.description}</span>
           <span className="key">{this.props.triggerKey}</span>
         </div>
